@@ -5,8 +5,8 @@ Outline Tab Serializers.
 from django.utils.translation import ngettext
 from rest_framework import serializers
 
-from lms.djangoapps.course_home_api.dates.v1.serializers import DateSummarySerializer
-from lms.djangoapps.course_home_api.progress.v1.serializers import CertificateDataSerializer
+from lms.djangoapps.course_home_api.dates.serializers import DateSummarySerializer
+from lms.djangoapps.course_home_api.progress.serializers import CertificateDataSerializer
 from lms.djangoapps.course_home_api.mixins import DatesBannerSerializerMixin, VerifiedModeSerializerMixin
 
 

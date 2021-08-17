@@ -14,7 +14,7 @@ from rest_framework.response import Response
 
 from xmodule.modulestore.django import modulestore
 from common.djangoapps.student.models import CourseEnrollment
-from lms.djangoapps.course_home_api.progress.v1.serializers import ProgressTabSerializer
+from lms.djangoapps.course_home_api.progress.serializers import ProgressTabSerializer
 from lms.djangoapps.course_home_api.toggles import course_home_mfe_progress_tab_is_active
 from lms.djangoapps.courseware.access import has_access, has_ccx_coach_role
 from lms.djangoapps.course_blocks.api import get_course_blocks

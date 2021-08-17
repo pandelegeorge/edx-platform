@@ -33,7 +33,7 @@ class ProgressTabTestViews(BaseCourseHomeTests):
     """
     def setUp(self):
         super().setUp()
-        self.url = reverse('course-home-progress-tab', args=[self.course.id])
+        self.url = reverse('course-home:progress-tab', args=[self.course.id])
 
     @override_waffle_flag(COURSE_HOME_MICROFRONTEND_PROGRESS_TAB, active=True)
     @ddt.data(CourseMode.AUDIT, CourseMode.VERIFIED)
@@ -74,7 +74,7 @@ class ProgressTabTestViews(BaseCourseHomeTests):
 
     @override_waffle_flag(COURSE_HOME_MICROFRONTEND_PROGRESS_TAB, active=True)
     def test_get_unknown_course(self):
-        url = reverse('course-home-progress-tab', args=['course-v1:unknown+course+2T2020'])
+        url = reverse('course-home:progress-tab', args=['course-v1:unknown+course+2T2020'])
         response = self.client.get(url)
         assert response.status_code == 404
 
@@ -192,12 +192,12 @@ class ProgressTabTestViews(BaseCourseHomeTests):
         assert response.data['username'] == self.user.username
 
         other_user = UserFactory()
-        self.url = reverse('course-home-progress-tab-other-student', args=[self.course.id, other_user.id])
+        self.url = reverse('course-home:progress-tab-other-student', args=[self.course.id, other_user.id])
         CourseEnrollment.enroll(other_user, self.course.id)
 
         # users with the ccx coach role can view other students' progress pages
         with patch(
-            'lms.djangoapps.course_home_api.progress.v1.views.has_ccx_coach_role',
+            'lms.djangoapps.course_home_api.progress.views.has_ccx_coach_role',
             return_value=True
         ):
             response = self.client.get(self.url)

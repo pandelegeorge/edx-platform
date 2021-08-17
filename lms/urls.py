@@ -986,7 +986,10 @@ urlpatterns.extend(get_plugin_url_patterns(ProjectType.LMS))
 
 # Course Home API urls
 urlpatterns += [
-    url(r'^api/course_home/', include('lms.djangoapps.course_home_api.urls')),
+    # While this says v1 in its URL, this API is actually a BFF ("backend for frontend") for the Learning MFE.
+    # It will change and morph as needed for the frontend, and is not a stable API on which other code can rely.
+    # The v1 URL fragment is just kept for historical reasons (and in case we ever want to ship a non-BFF v2 maybe).
+    url(r'^api/course_home/v1/', include(('lms.djangoapps.course_home_api.urls', 'course-home'))),
 ]
 
 # Course Experience API urls
