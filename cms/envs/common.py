@@ -615,6 +615,7 @@ EDX_ROOT_URL = ''
 
 # use the ratelimit backend to prevent brute force attacks
 AUTHENTICATION_BACKENDS = [
+    'auth_backends.backends.EdXOAuth2',
     'rules.permissions.ObjectPermissionBackend',
     'openedx.core.djangoapps.oauth_dispatch.dot_overrides.backends.EdxRateLimitedAllowAllUsersModelBackend',
     'bridgekeeper.backends.RulePermissionBackend',
@@ -632,9 +633,12 @@ LMS_BASE = 'localhost:18000'
 LMS_ROOT_URL = "https://localhost:18000"
 LMS_INTERNAL_ROOT_URL = LMS_ROOT_URL
 
+LOGIN_URL = '/login/'
+
+# Use LMS SSO for login
+SOCIAL_AUTH_STRATEGY = 'auth_backends.strategies.EdxDjangoStrategy'
 LOGIN_REDIRECT_URL = EDX_ROOT_URL + '/home/'
 # TODO: Determine if LOGIN_URL could be set to the FRONTEND_LOGIN_URL value instead.
-LOGIN_URL = reverse_lazy('login_redirect_to_lms')
 FRONTEND_LOGIN_URL = lambda settings: settings.LMS_ROOT_URL + '/login'
 derived('FRONTEND_LOGIN_URL')
 FRONTEND_LOGOUT_URL = lambda settings: settings.LMS_ROOT_URL + '/logout'
@@ -1615,6 +1619,9 @@ INSTALLED_APPS = [
 
     # Database-backed Organizations App (http://github.com/edx/edx-organizations)
     'organizations',
+
+    # Allow Studio to use LMS for SSO
+    'social_django',
 ]
 
 
@@ -2367,30 +2374,6 @@ REGISTRATION_EXTRA_FIELDS = {
     'country': 'hidden',
 }
 EDXAPP_PARSE_KEYS = {}
-
-###################### DEPRECATED URLS ##########################
-
-# .. toggle_name: DISABLE_DEPRECATED_SIGNIN_URL
-# .. toggle_implementation: DjangoSetting
-# .. toggle_default: False
-# .. toggle_description: Toggle for removing the deprecated /signin url.
-# .. toggle_use_cases: temporary
-# .. toggle_creation_date: 2019-12-02
-# .. toggle_target_removal_date: 2020-06-01
-# .. toggle_warnings: This url can be removed once it no longer has any real traffic.
-# .. toggle_tickets: ARCH-1253
-DISABLE_DEPRECATED_SIGNIN_URL = False
-
-# .. toggle_name: DISABLE_DEPRECATED_SIGNUP_URL
-# .. toggle_implementation: DjangoSetting
-# .. toggle_default: False
-# .. toggle_description: Toggle for removing the deprecated /signup url.
-# .. toggle_use_cases: temporary
-# .. toggle_creation_date: 2019-12-02
-# .. toggle_target_removal_date: 2020-06-01
-# .. toggle_warnings: This url can be removed once it no longer has any real traffic.
-# .. toggle_tickets: ARCH-1253
-DISABLE_DEPRECATED_SIGNUP_URL = False
 
 ##### LOGISTRATION RATE LIMIT SETTINGS #####
 LOGISTRATION_RATELIMIT_RATE = '100/5m'

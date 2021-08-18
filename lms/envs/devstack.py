@@ -41,6 +41,7 @@ IDA_LOGOUT_URI_LIST = [
     'http://localhost:18130/logout/',  # ecommerce
     'http://localhost:18150/logout/',  # credentials
     'http://localhost:18381/logout/',  # discovery
+    'http://localhost:18010/logout/',  # studio
 ]
 
 ################################ LOGGERS ######################################

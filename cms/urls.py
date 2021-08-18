@@ -7,6 +7,7 @@ from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.contrib.admin import autodiscover as django_autodiscover
 from django.utils.translation import ugettext_lazy as _
+from auth_backends.urls import oauth2_urlpatterns
 from edx_api_doc_tools import make_docs_urls
 from ratelimitbackend import admin
 
@@ -43,7 +44,7 @@ COURSELIKE_KEY_PATTERN = r'(?P<course_key_string>({}|{}))'.format(
 # Pattern to match a library key only
 LIBRARY_KEY_PATTERN = r'(?P<library_key_string>library-v1:[^/+]+\+[^/+]+)'
 
-urlpatterns = [
+urlpatterns = oauth2_urlpatterns + [
     url(r'', include('openedx.core.djangoapps.user_authn.urls_common')),
     url(r'', include('common.djangoapps.student.urls')),
     url(r'^transcripts/upload$', contentstore_views.upload_transcripts, name='upload_transcripts'),
@@ -87,7 +88,6 @@ urlpatterns = [
     # restful api
     url(r'^$', contentstore_views.howitworks, name='homepage'),
     url(r'^howitworks$', contentstore_views.howitworks, name='howitworks'),
-    url(r'^signin_redirect_to_lms$', contentstore_views.login_redirect_to_lms, name='login_redirect_to_lms'),
     url(r'^request_course_creator$', contentstore_views.request_course_creator, name='request_course_creator'),
     url(fr'^course_team/{COURSELIKE_KEY_PATTERN}(?:/(?P<email>.+))?$',
         contentstore_views.course_team_handler, name='course_team_handler'),
@@ -182,18 +182,6 @@ urlpatterns = [
     url(r'^api/tasks/v0/', include('user_tasks.urls')),
     url(r'^accessibility$', contentstore_views.accessibility, name='accessibility'),
 ]
-
-if not settings.DISABLE_DEPRECATED_SIGNIN_URL:
-    # TODO: Remove deprecated signin url when traffic proves it is no longer in use
-    urlpatterns += [
-        url(r'^signin$', contentstore_views.login_redirect_to_lms),
-    ]
-
-if not settings.DISABLE_DEPRECATED_SIGNUP_URL:
-    # TODO: Remove deprecated signup url when traffic proves it is no longer in use
-    urlpatterns += [
-        url(r'^signup$', contentstore_views.register_redirect_to_lms, name='register_redirect_to_lms'),
-    ]
 
 JS_INFO_DICT = {
     'domain': 'djangojs',
