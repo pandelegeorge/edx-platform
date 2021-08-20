@@ -9,7 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from opaque_keys.edx.keys import CourseKey
 from xmodule.modulestore.tests.django_utils import TEST_DATA_SPLIT_MODULESTORE, ModuleStoreIsolationMixin
-from xmodule.modulestore.tests.factories import CourseFactory
+from xmodule.modulestore.tests.factories import ToyCourseFactory
 
 from common.djangoapps.course_modes.models import CourseMode
 from common.djangoapps.course_modes.tests.factories import CourseModeFactory
@@ -41,15 +41,17 @@ class ProviderState(ModuleStoreIsolationMixin):
         self.clean_db(request.user, course_key)
         self.start_modulestore_isolation()
 
-        demo_course = CourseFactory.create(
+        demo_course = ToyCourseFactory.create(
             org=course_key.org,
             course=course_key.course,
             run=course_key.run,
             display_name="Demonstration Course",
             modulestore=self.store,
+            start=datetime(2024, 1, 1, 1, 1, 1),
             end=datetime(2028, 1, 1, 1, 1, 1),
             enrollment_start=datetime(2020, 1, 1, 1, 1, 1),
             enrollment_end=datetime(2028, 1, 1, 1, 1, 1),
+            license="all-rights-reserved",
         )
 
         CourseModeFactory(

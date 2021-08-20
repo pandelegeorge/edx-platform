@@ -5,7 +5,11 @@ import os
 
 from django.test import LiveServerTestCase
 from django.urls import reverse
+from edx_toggles.toggles.testutils import override_waffle_flag
 from pact import Verifier
+
+from openedx.features.discounts.applicability import DISCOUNT_APPLICABILITY_FLAG
+
 
 log = logging.getLogger(__name__)
 logging.basicConfig(level=logging.DEBUG)
@@ -32,6 +36,7 @@ class ProviderVerificationServer(LiveServerTestCase):
     def tearDownClass(cls):
         super().tearDownClass()
 
+    @override_waffle_flag(DISCOUNT_APPLICABILITY_FLAG, active=True)
     def test_verify_pact(self):
         output, _ = self.verifier.verify_pacts(
             os.path.join(PACT_DIR, PACT_FILE),

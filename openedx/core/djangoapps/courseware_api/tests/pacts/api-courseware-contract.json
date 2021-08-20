@@ -61,7 +61,7 @@
           ],
           "user_timezone": null,
           "verified_mode": {
-            "access_expiration_date": null,
+            "access_expiration_date": "2013-02-05T05:00:00Z",
             "currency": "USD",
             "currency_symbol": "$",
             "price": 149,
@@ -86,7 +86,7 @@
           },
           "marketing_url": null,
           "celebrations": {
-            "irst_section": false,
+            "first_section": false,
             "streak_length_to_celebrate": null,
             "streak_discount_experiment_enabled": false
           },
