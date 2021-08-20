@@ -7,9 +7,9 @@ from datetime import datetime
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
-from opaque_keys.edx.keys import CourseKey
+from opaque_keys.edx.keys import CourseKey, UsageKey
 from xmodule.modulestore.tests.django_utils import TEST_DATA_SPLIT_MODULESTORE, ModuleStoreIsolationMixin
-from xmodule.modulestore.tests.factories import ToyCourseFactory
+from xmodule.modulestore.tests.factories import CourseFactory, ItemFactory, ToyCourseFactory
 
 from common.djangoapps.course_modes.models import CourseMode
 from common.djangoapps.course_modes.tests.factories import CourseModeFactory
@@ -20,6 +20,7 @@ from openedx.features.course_duration_limits.models import CourseDurationLimitCo
 class ProviderState(ModuleStoreIsolationMixin):
     """ Provider State Setup """
 
+    COURSE_KEY = "course-v1:edX+DemoX+Demo_Course"
     MODULESTORE = TEST_DATA_SPLIT_MODULESTORE
 
     def clean_db(self, user, course_key):
@@ -33,10 +34,11 @@ class ProviderState(ModuleStoreIsolationMixin):
         except IndexError:
             pass
 
-    def course_setup(self, request):
-        """ Setup course data """
-
-        course_key = CourseKey.from_string('course-v1:edX+DemoX+Demo_Course')
+    def setup_course_metadata(self, request):
+        """
+        Setup course metadata and related database entries for provider state setup.
+        """
+        course_key = CourseKey.from_string(self.COURSE_KEY)
 
         self.clean_db(request.user, course_key)
         self.start_modulestore_isolation()
@@ -70,6 +72,46 @@ class ProviderState(ModuleStoreIsolationMixin):
         CourseEnrollment.enroll(request.user, demo_course.id, CourseMode.AUDIT)
         CourseDurationLimitConfig.objects.create(enabled=True, enabled_as_of=datetime(2018, 1, 1))
 
+    def setup_sequence_metadata(self, request):
+        """
+        Setup course with appropriate sequence for provider state setup.
+        """
+        course_key = CourseKey.from_string(self.COURSE_KEY)
+
+        self.clean_db(request.user, course_key)
+        self.start_modulestore_isolation()
+
+        demo_course = CourseFactory.create(
+            org=course_key.org,
+            course=course_key.course,
+            run=course_key.run,
+            display_name="Demonstration Course",
+            modulestore=self.store,
+            end=datetime(2028, 1, 1, 1, 1, 1),
+            enrollment_start=datetime(2020, 1, 1, 1, 1, 1),
+            enrollment_end=datetime(2028, 1, 1, 1, 1, 1),
+        )
+        section = ItemFactory.create(
+            parent=demo_course,
+            category="chapter",
+            display_name="Example Week 1: Getting Started"
+        )
+        subsection = ItemFactory.create(
+            location=UsageKey.from_string('block-v1:edX+DemoX+Demo_Course+type@sequential+block@basic_questions'),
+            parent=section,
+            category="sequential",
+            display_name="Homework - Question Styles",
+            metadata={'graded': True, 'format': 'Homework'}
+        )
+        ItemFactory.create(
+            location=UsageKey.from_string(
+                'block-v1:edX+DemoX+Demo_Course+type@vertical+block@2152d4a4aadc4cb0af5256394a3d1fc7'
+            ),
+            parent=subsection,
+            category="vertical",
+            display_name="Pointing on a Picture"
+        )
+
 
 @csrf_exempt
 @require_POST
@@ -77,8 +119,12 @@ def provider_state(request):
     """
     Provider state setup view needed by pact verifier.
     """
+    provider_state_obj = ProviderState()
     state_setup_mapping = {
-        'course metadata exists for course_id course-v1:edX+DemoX+Demo_Course': ProviderState().course_setup
+        'course metadata exists for course_id '
+        'course-v1:edX+DemoX+Demo_Course': provider_state_obj.setup_course_metadata,
+        'sequence metadata data exists for sequence_id block-v1:'
+        'edX+DemoX+Demo_Course+type@sequential+block@basic_questions': provider_state_obj.setup_sequence_metadata,
     }
     request_body = json.loads(request.body)
     state = request_body.get('state')
