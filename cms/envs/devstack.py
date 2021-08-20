@@ -47,6 +47,7 @@ LMS_BASE = 'localhost:18000'
 LMS_ROOT_URL = f'http://{LMS_BASE}'
 FEATURES['PREVIEW_LMS_BASE'] = "preview." + LMS_BASE
 
+# TODO: Should these be removed when switching to OAuth?
 FRONTEND_LOGIN_URL = LMS_ROOT_URL + '/login'
 FRONTEND_LOGOUT_URL = LMS_ROOT_URL + '/logout'
 FRONTEND_REGISTER_URL = LMS_ROOT_URL + '/register'

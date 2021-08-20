@@ -638,6 +638,7 @@ LOGIN_URL = '/login/'
 # Use LMS SSO for login
 SOCIAL_AUTH_STRATEGY = 'auth_backends.strategies.EdxDjangoStrategy'
 LOGIN_REDIRECT_URL = EDX_ROOT_URL + '/home/'
+# TODO: Should these be removed when switching to OAuth?
 # TODO: Determine if LOGIN_URL could be set to the FRONTEND_LOGIN_URL value instead.
 FRONTEND_LOGIN_URL = lambda settings: settings.LMS_ROOT_URL + '/login'
 derived('FRONTEND_LOGIN_URL')
