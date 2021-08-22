@@ -92,6 +92,21 @@
       % endif
     >
       <div class="colophon">
+        <!-- <div class="colophon"> -->
+            <nav class="nav-colophon">
+              <ol>
+                  <li>
+                     <a href="https://www.telacad.ro">Home</a>
+                  </li>
+                  <li>
+                     <a href="https://www.telacad.ro/de-ce-telacad/">About</a>
+                  </li>
+                  <li>
+                     <a href="https://www.telacad.ro/contact/">Contact</a>
+                  </li>
+              </ol>
+            </nav>
+            <!--
         <nav class="nav-colophon" aria-label="${_('About')}">
           <ol>
               % for item_num, link in enumerate(footer['navigation_links'], start=1):
@@ -101,7 +116,8 @@
               % endfor
           </ol>
         </nav>
-
+        -->
+        <!--
         % if context.get('include_language_selector', footer_language_selector_is_enabled()):
             <%include file="${static.get_template_path('widgets/footer-language-selector.html')}"/>
         % endif
@@ -120,9 +136,10 @@
             </a>
           </p>
         </div>
-
+        -->
         ## Site operators: Please do not remove this paragraph! This attributes back to edX and makes your acknowledgement of edX's trademarks clear.
-          <p class="copyright">${footer['copyright']}
+         <!--
+        <p class="copyright">${footer['copyright']}
               % if icp_license_info.get('icp_license'):
                 ${u" | {text}".format(text=icp_license_info.get('text'))}
                 <a href="${icp_license_info.get('icp_license_link', '#')}">
@@ -130,7 +147,13 @@
                 </a>
               % endif
           </p>
-
+        -->
+        <nav class="nav-legal">
+            <ul>
+                <li><a href="https://www.telacad.ro/termeni-si-conditii/">Termeni si conditii</a></li>
+            </ul>
+         </nav>
+         <!--
         <nav class="nav-legal" aria-label="${_('Legal')}">
           <ul>
             % for item_num, link in enumerate(footer['legal_links'], start=1):
@@ -141,12 +164,14 @@
             <li><a href="${footer['edx_org_link']['url']}">${footer['edx_org_link']['text']}</a></li>
           </ul>
         </nav>
+         -->
       </div>
 
       ## Please leave this link and use one of the logos provided
       ## The OpenEdX link may be hidden when this view is served
       ## through an API to partner sites (such as marketing sites or blogs),
       ## which are not technically powered by OpenEdX.
+      <!--
       % if not hide_openedx_link:
       <div class="footer-about-openedx">
         <p>
@@ -156,6 +181,7 @@
         </p>
       </div>
       % endif
+      -->
     </footer>
   </div>
 % endif
