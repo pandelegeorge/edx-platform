@@ -621,7 +621,7 @@ FEATURES = {
     # .. toggle_creation_date: 2015-03-13
     # .. toggle_target_removal_date: None
     # .. toggle_tickets: https://github.com/edx/edx-platform/pull/7113
-    'CERTIFICATES_HTML_VIEW': False,
+    'CERTIFICATES_HTML_VIEW': True,
 
     # .. toggle_name: FEATURES['CUSTOM_CERTIFICATE_TEMPLATES_ENABLED']
     # .. toggle_implementation: DjangoSetting
