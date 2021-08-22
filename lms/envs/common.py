@@ -609,7 +609,7 @@ FEATURES = {
     'LICENSING': False,
 
     # Certificates Web/HTML Views
-    'CERTIFICATES_HTML_VIEW': False,
+    'CERTIFICATES_HTML_VIEW': True,
 
     # .. toggle_name: FEATURES['CUSTOM_CERTIFICATE_TEMPLATES_ENABLED']
     # .. toggle_implementation: DjangoSetting
