@@ -645,6 +645,7 @@ FEATURES = {
     # .. toggle_target_removal_date: None
     # .. toggle_warnings: The COURSE_DISCOVERY_MEANINGS setting should be properly defined.
     # .. toggle_tickets: https://github.com/edx/edx-platform/pull/7845
+    'CUSTOM_CERTIFICATE_TEMPLATES_ENABLED': True,
     'ENABLE_COURSE_DISCOVERY': False,
 
     # .. toggle_name: FEATURES['ENABLE_COURSE_FILENAME_CCX_SUFFIX']
