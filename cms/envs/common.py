@@ -274,6 +274,7 @@ FEATURES = {
 
     # Certificates Web/HTML Views
     'CERTIFICATES_HTML_VIEW': True,
+    'CUSTOM_CERTIFICATE_TEMPLATES_ENABLED': True,
 
     # Teams feature
     'ENABLE_TEAMS': True,
