@@ -644,7 +644,7 @@ FEATURES = {
     # .. toggle_creation_date: 2015-08-13
     # .. toggle_target_removal_date: None
     # .. toggle_tickets: https://openedx.atlassian.net/browse/SOL-1044
-    'CUSTOM_CERTIFICATE_TEMPLATES_ENABLED': False,
+    'CUSTOM_CERTIFICATE_TEMPLATES_ENABLED': True,
 
     # .. toggle_name: FEATURES['ENABLE_COURSE_DISCOVERY']
     # .. toggle_implementation: DjangoSetting
