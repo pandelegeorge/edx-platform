@@ -15,6 +15,7 @@
     <footer>
       <div class="row">
         <div class="col-md-9">
+          <!--
           <nav class="navbar site-nav navbar-expand-sm" aria-label="${_('About')}">
             <ul class="navbar-nav">
               % for item_num, link in enumerate(footer['navigation_links'], start=1):
@@ -24,7 +25,8 @@
               % endfor
             </ul>
           </nav>
-
+          -->
+          <!--
           <div class="wrapper-logo">
             <p>
               <a href="/">
@@ -39,8 +41,9 @@
               </a>
             </p>
           </div>
-
+          -->
           ## Site operators: Please do not remove this paragraph! This attributes back to edX and makes your acknowledgement of edX's trademarks clear.
+          <!--
           <p class="copyright">${footer['copyright']}
                % if icp_license_info.get('icp_license'):
                 ${u" | {text}".format(text=icp_license_info.get('text'))}
@@ -49,7 +52,13 @@
                 </a>
               % endif
           </p>
-
+          -->
+          <nav class="nav-legal">
+            <ul>
+                <li><a href="https://www.telacad.ro/termeni-si-conditii/">Termeni si conditii</a></li>
+            </ul>
+         </nav>
+         <!--
           <nav class="navbar legal-nav navbar-expand-sm" aria-label="${_('Legal')}">
             <ul class="navbar-nav">
               % for item_num, link in enumerate(footer['legal_links'], start=1):
@@ -92,7 +101,8 @@
       % endif
     >
       <div class="colophon">
-        <!-- <div class="colophon"> -->
+        <div class="colophon">
+-->
             <nav class="nav-colophon">
               <ol>
                   <li>

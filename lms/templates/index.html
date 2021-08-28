@@ -10,15 +10,19 @@ from openedx.core.djangolib.markup import HTML, Text
 
 <main id="main" aria-label="Content" tabindex="-1">
     <section class="home">
-      <header>
-        <div class="outer-wrapper">
-          <div class="title">
+      <header style="background-color:#FFF">
+        <div class="outer-wrapper" style="background-color:#FFF">
+          <div class="title" style="text-align: center;">
             <div class="heading-group">
+            <!--
               % if homepage_overlay_html:
                 ${homepage_overlay_html | n, decode.utf8}
               % else:
                 <%include file="index_overlay.html" />
               % endif
+              -->
+              <h2>Bun venit pe platforma cursurilor online <br />
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Telecom Academy</h2>
             </div>
             % if settings.FEATURES.get('ENABLE_COURSE_DISCOVERY'):
               <div class="course-search">
