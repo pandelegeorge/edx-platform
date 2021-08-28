@@ -114,10 +114,17 @@ from six import string_types
             else:
               href_class = "register"
           %>
-          <a href="${reg_href}" class="${href_class}">
-            ${_("Enroll Now")}
-          </a>
-          <div id="register_error"></div>
+          <table><tr><td width="300px">
+            <a href="https://www.telacad.ro">
+            <button type="button">Inscrie-te la curs</button></a> </td>
+            <td width="300px">
+        <a href="${reverse('register_user')}?course_id=${course.id | u}&enrollment_action=enroll">
+              <button type="button">Inscrie-te la demo</button>
+            </a>
+            </td>
+            </tr>
+            </table>
+            <div id="register_error"></div>
         %endif
         </div>
 
@@ -161,7 +168,7 @@ from six import string_types
       <div class="course-summary">
 
         <%include file="course_about_sidebar_header.html" />
-
+        <!--
         <%block name="course_about_important_dates">
         <ol class="important-dates">
           <li class="important-dates-item"><span class="icon fa fa-info-circle" aria-hidden="true"></span><p class="important-dates-item-title">${_("Course Number")}</p><span class="important-dates-item-text course-number">${course.display_number_with_default}</span></li>
@@ -239,6 +246,7 @@ from six import string_types
           % endif
         </ol>
         </%block>
+        -->
     </div>
 
       <%block name="course_about_reviews_tool">

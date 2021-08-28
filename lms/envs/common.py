@@ -337,7 +337,7 @@ FEATURES = {
     ],
 
     # Turn off account locking if failed login attempts exceeds a limit
-    'ENABLE_MAX_FAILED_LOGIN_ATTEMPTS': True,
+    'ENABLE_MAX_FAILED_LOGIN_ATTEMPTS':  False,
 
     # Hide any Personally Identifiable Information from application logs
     'SQUELCH_PII_IN_LOGS': True,
@@ -456,11 +456,11 @@ FEATURES = {
     'EXPOSE_CACHE_PROGRAMS_ENDPOINT': False,
 
     # Courseware search feature
-    'ENABLE_COURSEWARE_SEARCH': False,
-    'ENABLE_COURSEWARE_SEARCH_FOR_COURSE_STAFF': False,
+    'ENABLE_COURSEWARE_SEARCH': True,
+    'ENABLE_COURSEWARE_SEARCH_FOR_COURSE_STAFF': True,
 
     # Dashboard search feature
-    'ENABLE_DASHBOARD_SEARCH': False,
+    'ENABLE_DASHBOARD_SEARCH': True,
 
     # log all information from cybersource callbacks
     'LOG_POSTPAY_CALLBACKS': True,
@@ -492,7 +492,7 @@ FEATURES = {
     # .. toggle_warnings: The COURSE_DISCOVERY_MEANINGS setting should be properly defined.
     # .. toggle_tickets: https://github.com/edx/edx-platform/pull/7845
     'CUSTOM_CERTIFICATE_TEMPLATES_ENABLED': True,
-    'ENABLE_COURSE_DISCOVERY': False,
+    'ENABLE_COURSE_DISCOVERY': True,
 
     # Setting for overriding default filtering facets for Course discovery
     # COURSE_DISCOVERY_FILTERS = ["org", "language", "modes"]
@@ -1433,7 +1433,7 @@ MEDIA_URL = '/media/'
 # Locale/Internationalization
 CELERY_TIMEZONE = 'UTC'
 TIME_ZONE = 'UTC'
-LANGUAGE_CODE = 'en'  # http://www.i18nguy.com/unicode/language-identifiers.html
+LANGUAGE_CODE = 'ro'  # http://www.i18nguy.com/unicode/language-identifiers.html
 # these languages display right to left
 LANGUAGES_BIDI = ("he", "ar", "fa", "ur", "fa-ir", "rtl")
 
@@ -3416,11 +3416,11 @@ COUNTRIES_OVERRIDE = {
 
 # which access.py permission name to check in order to determine if a course is visible in
 # the course catalog. We default this to the legacy permission 'see_exists'.
-COURSE_CATALOG_VISIBILITY_PERMISSION = 'see_exists'
+COURSE_CATALOG_VISIBILITY_PERMISSION = 'see_in_catalog'
 
 # which access.py permission name to check in order to determine if a course about page is
 # visible. We default this to the legacy permission 'see_exists'.
-COURSE_ABOUT_VISIBILITY_PERMISSION = 'see_exists'
+COURSE_ABOUT_VISIBILITY_PERMISSION = 'see_about_page'
 
 DEFAULT_COURSE_VISIBILITY_IN_CATALOG = "both"
 DEFAULT_MOBILE_AVAILABLE = False
