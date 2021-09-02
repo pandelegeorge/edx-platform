@@ -1384,19 +1384,19 @@ ROOT_URLCONF = 'lms.urls'
 
 # Platform Email
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'localhost'
-EMAIL_PORT = 25
-EMAIL_USE_TLS = False
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
-DEFAULT_FROM_EMAIL = 'registration@example.com'
-DEFAULT_FEEDBACK_EMAIL = 'feedback@example.com'
-SERVER_EMAIL = 'devops@example.com'
-TECH_SUPPORT_EMAIL = 'technical@example.com'
-CONTACT_EMAIL = 'info@example.com'
-BUGS_EMAIL = 'bugs@example.com'
-UNIVERSITY_EMAIL = 'university@example.com'
-PRESS_EMAIL = 'press@example.com'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'content@telacad.ro'
+EMAIL_HOST_PASSWORD = 'SegientulTelAcad098'
+DEFAULT_FROM_EMAIL = 'office@telacad.ro'
+DEFAULT_FEEDBACK_EMAIL = 'office@telacad.ro'
+SERVER_EMAIL = 'office@telacad.ro'
+TECH_SUPPORT_EMAIL = 'office@telacad.ro'
+CONTACT_EMAIL = 'office@telacad.ro'
+BUGS_EMAIL = 'office@telacad.ro'
+UNIVERSITY_EMAIL = 'office@telacad.ro'
+PRESS_EMAIL = 'office@telacad.ro'
 FINANCE_EMAIL = ''
 
 # Platform mailing address
