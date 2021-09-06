@@ -248,11 +248,20 @@ ELASTIC_SEARCH_CONFIG:
     port: 9200
     use_ssl: false
 EMAIL_BACKEND: django.core.mail.backends.smtp.EmailBackend
-EMAIL_HOST: localhost
-EMAIL_HOST_PASSWORD: ''
-EMAIL_HOST_USER: ''
-EMAIL_PORT: 25
-EMAIL_USE_TLS: false
+EMAIL_HOST: 'smtp.gmail.com'
+EMAIL_HOST_PASSWORD:'SegientulTelAcad098'
+EMAIL_HOST_USER: 'content@telacad.ro'
+EMAIL_PORT: 587
+EMAIL_USE_TLS: True
+DEFAULT_FROM_EMAIL: 'office@telacad.ro'
+DEFAULT_FEEDBACK_EMAIL: 'office@telacad.ro'
+SERVER_EMAIL: 'office@telacad.ro'
+TECH_SUPPORT_EMAIL: 'office@telacad.ro'
+CONTACT_EMAIL: 'office@telacad.ro'
+BUGS_EMAIL: 'office@telacad.ro'
+UNIVERSITY_EMAIL: 'office@telacad.ro'
+PRESS_EMAIL: 'office@telacad.ro'
+FINANCE_EMAIL: ''
 ENABLE_COMPREHENSIVE_THEMING: false
 ENTERPRISE_API_URL: http://edx.devstack.lms:18000/enterprise/api/v1
 ENTERPRISE_COURSE_ENROLLMENT_AUDIT_MODES:
