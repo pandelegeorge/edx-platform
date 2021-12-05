@@ -9,6 +9,10 @@ from six.moves.urllib.parse import urlparse  # pylint: disable=import-error
 from openedx.core.djangoapps.ace_common.tracking import CampaignTrackingInfo, GoogleAnalyticsTrackingPixel
 from openedx.core.djangolib.markup import HTML
 
+from googleapiclient.discovery import build
+import random
+
+
 register = template.Library()  # pylint: disable=invalid-name
 
 
@@ -153,3 +157,29 @@ def ensure_url_is_absolute(site, relative_path):
         relative_path = relative_path.lstrip('/')
         url = u'https://{root}/{path}'.format(root=root, path=relative_path)
     return url
+
+@register.simple_tag
+def query_random_youtube(noitem):
+    youTubeApiKey='AIzaSyC1K6gALKZbKuiHHsJZXJPY6kocvFYsk7s'
+    youtube=build('youtube','v3',developerKey=youTubeApiKey)
+    channelId='UCW0uTmSAQvdp_XrfyeRCZPg'
+    contentdata=youtube.channels().list(id=channelId,part='contentDetails').execute()
+    playlists_id = ['PLxOvbcgZ6Vy0ZS06UPrdc-j-SK2EVr8eg','PLxOvbcgZ6Vy3F9EnUYM-rFXd-HSzGRLzF','PLxOvbcgZ6Vy0upBAPrNmgkAahqJfUN0Ez']
+    videos = [ ]
+    videosrandome = [ ]
+    next_page_token = None
+    for playlistid in playlists_id:
+        while 1:
+            res = youtube.playlistItems().list(playlistId=playlistid,
+                                            part='snippet',
+                                            maxResults=50,
+                                            pageToken=next_page_token).execute()
+            videos += res['items']
+            next_page_token = res.get('nextPageToken')
+            if next_page_token is None:
+                videosrandome += random.sample(videos, k=noitem)
+                break
+    videoplaylist = ''
+    for i in videosrandome:
+        videoplaylist = videoplaylist + HTML(u'<td class="col" align="center" style="font-family: sans-serif; font-size: 14px; vertical-align: top; border-spacing: 0; padding: 0 5px; width: 33.33333333%;" width="33.33333333%" valign="top"><a href="https://www.youtube.com/embed/{0}?playlist={1}"><img src="https://img.youtube.com/vi/{0}/hqdefault.jpg" width="176" height="auto" /></a></td>').format(HTML(i['snippet']['resourceId']['videoId']),HTML(i['snippet']['playlistId']}))
+    return mark_safe(videoplaylist)
