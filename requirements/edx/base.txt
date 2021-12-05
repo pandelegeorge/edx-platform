@@ -1071,6 +1071,9 @@ xss-utils==0.3.0
     # via -r requirements/edx/base.in
 yarl==1.7.0
     # via aiohttp
+google-api-python-client
+google-auth-httplib2
+google-auth-oauthlib
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
