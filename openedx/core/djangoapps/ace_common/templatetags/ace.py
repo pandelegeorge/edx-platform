@@ -181,5 +181,5 @@ def query_random_youtube(noitem):
                 break
     videoplaylist = ''
     for i in videosrandome:
-        videoplaylist = videoplaylist + HTML(u'<td class="col" align="center" style="font-family: sans-serif; font-size: 14px; vertical-align: top; border-spacing: 0; padding: 0 5px; width: 33.33333333%;" width="33.33333333%" valign="top"><a href="https://www.youtube.com/embed/{0}?playlist={1}"><img src="https://img.youtube.com/vi/{0}/hqdefault.jpg" width="176" height="auto" /></a></td>').format(HTML(i['snippet']['resourceId']['videoId']),HTML(i['snippet']['playlistId']}))
+        videoplaylist = videoplaylist + HTML(u'<td class="col" align="center" style="font-family: sans-serif; font-size: 14px; vertical-align: top; border-spacing: 0; padding: 0 5px; width: 33.33333333%;" width="33.33333333%" valign="top"><a href="https://www.youtube.com/embed/{0}?playlist={1}"><img src="https://img.youtube.com/vi/{0}/hqdefault.jpg" width="176" height="auto" /></a></td>').format(HTML(i['snippet']['resourceId']['videoId']),HTML(i['snippet']['playlistId']))
     return mark_safe(videoplaylist)
