@@ -248,6 +248,9 @@ xblock==1.4.0             # via -r requirements/edx/base.in, acid-xblock, crowds
 xmlsec==1.3.9             # via python3-saml
 xss-utils==0.1.3          # via -r requirements/edx/base.in
 zipp==1.0.0               # via -c requirements/edx/../constraints.txt, -r requirements/edx/paver.txt, importlib-metadata
+google-api-python-client
+google-auth-httplib2
+google-auth-oauthlib
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
