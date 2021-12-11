@@ -7,17 +7,15 @@
     <tr>
         <td>
             <h1>
-                {% filter force_escape %}
-                {% blocktrans %}
-                    You have been enrolled in {{ course_name }}
-                {% endblocktrans %}
-                {% endfilter %}
+                Ai fost înrolat în cursul  {{ course_name }}
             </h1>
 
             <p style="color: rgba(0,0,0,.75);">
-                {% filter force_escape %}
-                {% blocktrans %}You have been enrolled in {{ course_name }} at {{ site_name }} by a member of the course staff. This course will now appear on your {{ site_name }} dashboard.{% endblocktrans %}
-                {% endfilter %}
+                <br /><br /> Bună, <br /><br />
+                Vești bune! Cursul tău {{ course_name }} este aici!
+                Ne face plăcere să te anunțăm că tocmai ai fost înrolat în cursul {{ course_name }} pe cursuri.telacad.ro.
+                Acest curs va apărea în dashboard-ul tău de pe cursuri.telacad.ro.
+                Tot ce mai rămâne de făcut este să dai click pe linkul de mai jos și să te apuci de studiu.
                 <br />
             </p>
 
@@ -26,12 +24,7 @@
             {% endfilter %}
             {% include "ace_common/edx_ace/common/return_to_course_cta.html" with course_cta_text=course_cta_text course_cta_url=course_url %}
 
-            <p style="color: rgba(0,0,0,.75);">
-                {% filter force_escape %}
-                {% blocktrans %}This email was automatically sent from {{ site_name }} to {{ full_name }}{% endblocktrans %}
-                {% endfilter %}
-                <br />
-            </p>
+
         </td>
     </tr>
 </table>

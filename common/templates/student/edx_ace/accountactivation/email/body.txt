@@ -1,11 +1,6 @@
 {% load i18n %}{% autoescape off %}
-{% blocktrans %}You're almost there! Use the link below to activate your account to access engaging, high-quality {{ platform_name }} courses. Note that you will not be able to log back into your account until you have activated it.{% endblocktrans %}
-
+{% blocktrans %} Bună, {% endblocktrans %}
+{% blocktrans %}Suntem foarte încântați că ți-ai creat contul de cursant Telecom Academy! Sperăm că și tu!.{% endblocktrans %}
+{% blocktrans %} Mai este un singur pas pe care trebuie să îl faci pentru a putea fi înrolat în cadrul cursurilor noastre: să îți activezi contul de cursant. După activare poți sa te înscrii la orice curs în varianta DEMO - fără costuri. {% blocktrans %}
 {{ confirm_activation_link }}
-
-{% blocktrans %}Enjoy learning with {{ platform_name }}.{% endblocktrans %}
-
-{% blocktrans %}If you need help, please use our web form at {{ support_url }} or email {{ support_email }}.{% endblocktrans %}
-
-{% blocktrans %}This email message was automatically sent by {{ lms_url }} because someone attempted to create an account on {{ platform_name }} using this email address.{% endblocktrans %}
 {% endautoescape %}

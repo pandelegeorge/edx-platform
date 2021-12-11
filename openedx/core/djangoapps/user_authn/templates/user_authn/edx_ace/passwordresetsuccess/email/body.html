@@ -7,24 +7,12 @@
     <tr>
         <td>
             <h1>
-                {% trans "Password Reset Success" as tmsg %}{{ tmsg | force_escape }}
+                Confirmare Resetare parola pe cursuri.telacad.ro
             </h1>
             <p style="color: rgba(0,0,0,.75);">
-                {% filter force_escape %}
-                   {% blocktrans %}Hello {{ name }},{% endblocktrans %}
-                {% endfilter %}
+                Resetarea parolei s-a este un SUCCES!
+                Asa ne dorim sa fie și parcursul tău la Telecom Academy!
             </p>
-            <p style="color: rgba(0,0,0,.75);">
-                {% filter force_escape %}
-                {% blocktrans %}This is to confirm that you have successfully changed your password associated with {{ platform_name }} account. Please sign-in to your account.{% endblocktrans %}
-                {% endfilter %}
-                <br />
-            </p>
-
-                {% filter force_escape %}
-                {% blocktrans asvar course_cta_text %}Sign in{% endblocktrans %}
-                {% endfilter %}
-                {% include "ace_common/edx_ace/common/return_to_course_cta.html" with course_cta_text=course_cta_text course_cta_url=login_link %}
         </td>
     </tr>
 </table>
