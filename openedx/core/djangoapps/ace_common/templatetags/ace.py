@@ -177,7 +177,7 @@ def query_random_youtube(noitem):
             videos += res['items']
             next_page_token = res.get('nextPageToken')
             if next_page_token is None:
-                videosrandome += random.sample(videos, k=noitem)
+                videosrandome += random.sample(videos, k=int(noitem))
                 break
     videoplaylist = ''
     for i in videosrandome:
