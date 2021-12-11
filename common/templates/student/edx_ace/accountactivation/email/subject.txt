@@ -1,4 +1,4 @@
 {% load i18n %}
 {% autoescape off %}
-{% blocktrans trimmed %}Action Required: Activate your {{ platform_name }} account{% endblocktrans %}
+{% blocktrans trimmed %}Activează-ți contul de cursant pe {{ platform_name }}{% endblocktrans %}
 {% endautoescape %}
