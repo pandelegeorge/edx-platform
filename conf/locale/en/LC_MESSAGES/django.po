@@ -4466,7 +4466,7 @@ msgstr ""
 
 #: common/templates/student/edx_ace/accountactivation/email/body.html
 msgid "Account Activation"
-msgstr ""
+msgstr "Activează-ți contul"
 
 #: common/templates/student/edx_ace/accountactivation/email/body.html
 #: common/templates/student/edx_ace/accountactivation/email/body.txt
@@ -4476,10 +4476,13 @@ msgid ""
 "engaging, high-quality %(platform_name)s courses. Note that you will not be "
 "able to log back into your account until you have activated it."
 msgstr ""
+"Bună, ",
+"Suntem foarte încântați că ți-ai creat contul de cursant Telecom Academy! Sperăm că și tu! ",
+"Mai este un singur pas pe care trebuie să îl faci pentru a putea fi înrolat în cadrul cursurilor noastre: să îți activezi contul de cursant. După activare poți sa te înscrii la orice curs în varianta DEMO - fără costuri. "
 
 #: common/templates/student/edx_ace/accountactivation/email/body.html
 msgid "Activate Your Account"
-msgstr ""
+msgstr "Activează-ți contul"
 
 #: common/templates/student/edx_ace/accountactivation/email/body.html
 #: common/templates/student/edx_ace/accountactivation/email/body.txt
