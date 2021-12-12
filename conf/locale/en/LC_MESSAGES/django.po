@@ -4517,7 +4517,7 @@ msgstr ""
 #: common/templates/student/edx_ace/accountactivation/email/subject.txt
 #, python-format
 msgid "Action Required: Activate your %(platform_name)s account"
-msgstr ""
+msgstr "Activează-ți contul de cursant"
 
 #: common/templates/student/edx_ace/accountrecovery/email/body.html
 msgid "Create Password"
@@ -7569,7 +7569,7 @@ msgstr ""
 #: lms/templates/instructor/edx_ace/enrollenrolled/email/subject.txt
 #, python-format
 msgid "You have been enrolled in %(course_name)s"
-msgstr ""
+msgstr "Ai fost înrolat în cursul %(course_name)s"
 
 #: lms/templates/instructor/edx_ace/addbetatester/email/body.html
 #, python-format
@@ -7808,6 +7808,12 @@ msgid ""
 "the course staff. This course will now appear on your %(site_name)s "
 "dashboard."
 msgstr ""
+"Bună, "
+"Vești bune! Cursul tău %(course_name)s este aici! "
+"Ne face plăcere să te anunțăm că tocmai ai fost înrolat în cursul %(course_name)s pe %(site_name)s. "
+"Acest curs va apărea în dashboard-ul tău de pe %(site_name)s. "
+"Tot ce mai rămâne de făcut este să dai click pe %(course_name)s și să te apuci de studiu. "
+
 
 #: lms/templates/instructor/edx_ace/enrollenrolled/email/body.html
 msgid "Access the Course Materials Now"
@@ -9881,11 +9887,11 @@ msgstr ""
 #: openedx/core/djangoapps/user_authn/templates/user_authn/edx_ace/passwordreset/email/subject.txt
 #, python-format
 msgid "Password reset on %(platform_name)s"
-msgstr ""
+msgstr "Resetare parola pe %(platform_name)s"
 
 #: openedx/core/djangoapps/user_authn/templates/user_authn/edx_ace/passwordresetsuccess/email/body.html
 msgid "Password Reset Success"
-msgstr ""
+msgstr "Confirmare Resetare parola pe %(platform_name)s"
 
 #: openedx/core/djangoapps/user_authn/templates/user_authn/edx_ace/passwordresetsuccess/email/body.html
 #, python-format
