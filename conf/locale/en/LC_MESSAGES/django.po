@@ -4516,9 +4516,9 @@ msgstr ""
 
 #: common/templates/student/edx_ace/accountactivation/email/subject.txt
 #, python-format
-msgid "Action Required: Activate your %(platform_name)s account"
+msgid "Activate your account"
 msgstr ""
-"Activează-ți contul de cursant %(platform_name)s"
+"Activează-ți contul de cursant"
 
 #: common/templates/student/edx_ace/accountrecovery/email/body.html
 msgid "Create Password"
