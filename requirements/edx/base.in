@@ -69,6 +69,7 @@ django-webpack-loader               # Used to wire webpack bundles into the djan
 djangorestframework
 docopt
 done-xblock
+drf-nested-routers                  # Required by blockstore
 edx-ace
 edx-api-doc-tools
 edx-auth-backends                   # Allow Studio to use LMS SSO
