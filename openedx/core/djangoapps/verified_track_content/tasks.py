@@ -12,6 +12,7 @@ from opaque_keys.edx.keys import CourseKey
 
 from openedx.core.djangoapps.course_groups.cohorts import add_user_to_cohort, get_cohort, get_cohort_by_name
 from common.djangoapps.student.models import CourseEnrollment, CourseMode
+import time
 
 LOGGER = get_task_logger(__name__)
 
