@@ -827,3 +827,13 @@ def student_dashboard(request):  # lint-amnesty, pylint: disable=too-many-statem
     })
 
     return render_to_response('dashboard.html', context)
+
+@login_required
+@ensure_csrf_cookie
+@add_maintenance_banner
+def student_dashboard_telacadro(request):
+    """
+    Redirect to telacad the current logged user
+    """
+    user = request.user
+    return redirect('https://telacad.ro?user='+str(user))
