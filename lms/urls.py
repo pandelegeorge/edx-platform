@@ -98,7 +98,7 @@ urlpatterns = [
     url(r'', include('common.djangoapps.student.urls')),
     # TODO: Move lms specific student views out of common code
     url(r'^dashboard/?$', student_views.student_dashboard, name='dashboard'),
-    url(r'^wwwtelacadro&page=(?P<pageuri>.*)$',student_views.student_dashboard_telacadro, name='dashboardtelacadro'),
+    url(r'^wwwtelacadro/?page=(?P<pageuri>.*)$',student_views.student_dashboard_telacadro, name='dashboardtelacadro'),
     url(r'^change_enrollment$', student_views.change_enrollment, name='change_enrollment'),
 
     # Event tracking endpoints
