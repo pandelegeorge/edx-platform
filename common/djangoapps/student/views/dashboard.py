@@ -833,9 +833,10 @@ def student_dashboard(request):
 @login_required
 @ensure_csrf_cookie
 @add_maintenance_banner
-def student_dashboard_telacadro(request,pageuri):
+def student_dashboard_telacadro(request):
     """
     Redirect to telacad the current logged user
     """
     user = request.user
-    return redirect(uri_to_iri(pageuri) + '?user='+str(user))
+    pageuri = request.GET["page"]
+    return redirect( uri_to_iri(pageuri) + '?user='+str(user))
