@@ -13,6 +13,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.utils.translation import ugettext as _
+from django.utils.encoding import uri_to_iri
 from django.views.decorators.csrf import ensure_csrf_cookie
 from edx_django_utils import monitoring as monitoring_utils
 from edx_django_utils.plugins import get_plugins_view_context
@@ -832,9 +833,9 @@ def student_dashboard(request):
 @login_required
 @ensure_csrf_cookie
 @add_maintenance_banner
-def student_dashboard_telacadro(request):
+def student_dashboard_telacadro(request,pageuri):
     """
     Redirect to telacad the current logged user
     """
     user = request.user
-    return redirect('https://telacad.ro?user='+str(user))
+    return redirect(uri_to_iri(pageuri) + '?user='+str(user))
