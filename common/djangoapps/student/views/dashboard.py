@@ -839,6 +839,6 @@ def student_dashboard_telacadro(request):
     """
     user = request.user
     pageuri = request.GET["page"]
-    return redirect(uri_to_iri(pageuri) + '&user=' + str(user))
+    return redirect( uri_to_iri(pageuri) + '&user='+str(user))
         
         
