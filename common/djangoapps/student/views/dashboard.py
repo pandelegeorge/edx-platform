@@ -838,7 +838,13 @@ def student_dashboard_telacadro(request):
     Redirect to telacad the current logged user
     """
     user = request.user
-    pageuri = request.GET["page"]
-    return redirect( uri_to_iri(pageuri) + '&user='+str(user))
+    try:
+        pageuri = request.GET["page"]
+        if pageuri:
+            return redirect( uri_to_iri(pageuri) + '&user='+str(user))
+        else:
+            return redirect( 'https://www.telacad.ro?user='+str(user))
+    except:
+        return redirect( 'https://www.telacad.ro?user='+str(user))
         
         
