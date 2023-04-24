@@ -105,6 +105,29 @@ def standard_cookie_settings(request):
 
     return cookie_settings
 
+def standard_second_cookie_settings(request):
+    """ Returns the common cookie settings (e.g. expiration time). """
+
+    cookie_settings = {
+        'domain': 'telacad.ro',
+        'path': '/',
+        'httponly': None,
+    }
+
+    _set_expires_in_cookie_settings(cookie_settings, request.session.get_expiry_age())
+
+    # In production, TLS should be enabled so that this cookie is encrypted
+    # when we send it.  We also need to set "secure" to True so that the browser
+    # will transmit it only over secure connections.
+    #
+    # In non-production environments (acceptance tests, devstack, and sandboxes),
+    # we still want to set this cookie.  However, we do NOT want to set it to "secure"
+    # because the browser won't send it back to us.  This can cause an infinite redirect
+    # loop in the third-party auth flow, which calls `are_logged_in_cookies_set` to determine
+    # whether it needs to set the cookie or continue to the next pipeline stage.
+    cookie_settings['secure'] = request.is_secure()
+
+    return cookie_settings
 
 def _set_expires_in_cookie_settings(cookie_settings, expires_in):
     """
@@ -145,9 +168,14 @@ def set_logged_in_cookies(request, response, user):
         # so that cookie-based login determination remains consistent.
         cookie_settings = standard_cookie_settings(request)
 
+        cookie_second_settings = standard_second_cookie_settings(request)
+
         _set_deprecated_logged_in_cookie(response, cookie_settings)
+        _set_deprecated_logged_in_cookie(response, cookie_second_settings)
         _set_deprecated_user_info_cookie(response, request, user, cookie_settings)
+        _set_deprecated_user_info_cookie(response, request, user, cookie_second_settings)
         _create_and_set_jwt_cookies(response, request, cookie_settings, user=user)
+        _create_and_set_jwt_cookies(response, request, cookie_second_settings, user=user)
         CREATE_LOGON_COOKIE.send(sender=None, user=user, response=response)
 
     return response
