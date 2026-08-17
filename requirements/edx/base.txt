@@ -1071,9 +1071,10 @@ xss-utils==0.3.0
     # via -r requirements/edx/base.in
 yarl==1.7.0
     # via aiohttp
-google-api-python-client
-google-auth-httplib2
-google-auth-oauthlib
+google-api-python-client==2.33.0
+google-auth-httplib2==0.1.0
+google-auth-oauthlib==0.4.6
+httplib2==0.19.1           # pinned: newer httplib2 requires pyparsing's set_name() API, incompatible with pyparsing==2.4.7 pinned above for PyContracts/openedx-calc/chem
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
