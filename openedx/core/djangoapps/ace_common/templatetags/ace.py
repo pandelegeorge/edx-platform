@@ -8,7 +8,6 @@ from django.utils.safestring import mark_safe
 from openedx.core.djangoapps.ace_common.tracking import CampaignTrackingInfo, GoogleAnalyticsTrackingPixel
 from openedx.core.djangolib.markup import HTML
 
-from googleapiclient.discovery import build
 import random
 
 
@@ -161,6 +160,7 @@ def ensure_url_is_absolute(site, relative_path):
 def query_random_youtube(noitem):
     youTubeApiKey='AIzaSyC1K6gALKZbKuiHHsJZXJPY6kocvFYsk7s'
     try:
+        from googleapiclient.discovery import build
         youtube=build('youtube','v3',developerKey=youTubeApiKey)
         channelId='UCW0uTmSAQvdp_XrfyeRCZPg'
         contentdata=youtube.channels().list(id=channelId,part='contentDetails').execute()
