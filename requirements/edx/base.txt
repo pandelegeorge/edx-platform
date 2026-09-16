@@ -1139,6 +1139,9 @@ yarl==1.7.2
     # via aiohttp
 zipp==3.8.0
     # via importlib-metadata
+google-api-python-client
+google-auth-httplib2
+google-auth-oauthlib
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
